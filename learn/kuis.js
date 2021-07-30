@@ -1,4 +1,7 @@
 
+function convertTZ(date, tzString) {
+    return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
+}
 var stringIMG;
 
 letter_image_array = [
@@ -48,6 +51,7 @@ word_image_array = [
     var questionIndex = 0;
     var questions = 26;
     var totalTime = 61;
+    //var totalTime = 5
     function newQuiz() {
         questionIndex = 0;
         totalTime = 60;
@@ -238,7 +242,9 @@ word_image_array = [
             // store scores into local storage
             var savedHighScores = localStorage.getItem("high scores");
             var scoresArray;
-            //var thatdate = new Date();
+            var thatdate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
+            //convertTZ(thatdate, "Asia/Jakarta");
+            //console.log(thatdate);
 
             if (savedHighScores === null) {
                 scoresArray = [];
@@ -249,8 +255,8 @@ word_image_array = [
 
             var userScore = {
                 initials: initialInput.value,
-                score: finalScore.textContent
-                //date: thatdate
+                score: finalScore.textContent,
+                date: thatdate
             };
 
             console.log(userScore);
@@ -292,7 +298,7 @@ word_image_array = [
 
             for (; i < storedHighScores.length; i++) {
                 var eachNewHighScore = document.createElement("p");
-                eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
+                eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score+ " time: " + storedHighScores[i].date;
                 listOfHighScores.appendChild(eachNewHighScore);
             }
         }

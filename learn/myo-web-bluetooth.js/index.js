@@ -815,7 +815,6 @@
       mean+=values[i];
     }
     mean = mean/values.length;
-    //mean = cutDecimals(mean,7);
     return mean;
   }
 
@@ -831,11 +830,9 @@
   
     if (values.length % 2 == 0){
       median = values[half];
-      //median = cutDecimals(median,7);
       return median;
     }else
       median = (values[half - 1] + values[half]) / 2.0;
-      // /median = cutDecimals(median,7);
       return median;
   }
 
@@ -848,14 +845,12 @@
       variance +=  (Math.pow((values[i]- mean), 2));
     }
     variance = variance / (values.length - 1);
-    //variance = cutDecimals(variance,7)
     return variance;
   }
 
   function CalculateDeviance(values){
     var deviance = 0.0;
     deviance = Math.sqrt(CalculateVariance(values)); 
-    //deviance = cutDecimals(deviance,7);
     return deviance;
   }
 
@@ -877,9 +872,7 @@
       size++;
     }
     skewness = skewness / size;
-    //skewness = cutDecimals(skewness,7);
     return skewness;
-
   }
 
   function CalculateKurtosis(values){
@@ -900,7 +893,6 @@
       size++;
     }
     kurtosis = kurtosis / size;
-    //kurtosis = cutDecimals(kurtosis,7);
     return kurtosis;
   }
 
